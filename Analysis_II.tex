@@ -25,12 +25,17 @@
 
 \usepackage{lipsum}	% für Dummy-Text
 
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arctanh}{arctanh}
+
 %
 \hypersetup{
 	unicode=true,
 	pdftitle={Analysis},
 	pdfauthor={Flavia Bindschedler, Mathias Graf},
-	pdfsubject={Zusammenfassung Analysis},
+	pdfsubject={Zusammenfassung Analysis II},
 	pdfcreator={LaTeX},
 	pdfproducer={pdflatex},
 	pdfnewwindow=true
@@ -89,7 +94,8 @@
 
 \textit{\textbf{Diff'barkeit in $\mathbb{R}^n$:} zuerst die partiellen Ableitungen berechnen, um zu zeigen, dass diese gleichzeitig existieren (wenn es eine aufgeteilte Funktion ist, dann den Teil um den kritischen Punkt nehmen). Das Differential ist: $df \vert _{{x_0, y_0}} (v) = \frac{\partial }{\partial x} (x_0, y_0)v_1 + \frac{\partial }{\partial y}(x_0, y_0)v_2$. Nun berechnen wir: $R(v)=f(v) - f(x_0, y_0) - df(v)$, wobei $v=(v_1, v_2)$. Der GW  $\lim_{v \to (x_0, y_0)} \frac{R(v)}{\vert v \vert} = 0$}
 
-\textbf{Stetigkeit in $\mathbb{R}^n$:} Polarkoordinatentrick ist nützlich: $x= rcos\phi, y=rsin\phi$, falls der GW nur von $\phi$ abhängt, dann existiert der GW nicht. \textit{\textbf{in einem Punkt:} beide partielle Ableitungen berechnen, die GW der Abtleitungen nach gefragtem Punkt müssen gleich sein.}
+\textbf{Stetigkeit in $\mathbb{R}^n$:} Polarkoordinatentrick ist nützlich: 
+$x= r \cos\phi, y=r \sin\phi$, falls der GW nur von $\phi$ abhängt, dann existiert der GW nicht. \textit{\textbf{in einem Punkt:} beide partielle Ableitungen berechnen, die GW der Abtleitungen nach gefragtem Punkt müssen gleich sein.}
 
 \textbf{Lipschitz-Stetigkeit:} Eine Funktion ist Lipschitz stetig, fall die Ableitung beschränkt ist (geht in keinem Punkt gegen unendllich). Ist etwas nicht Lipschitz stetig, kann es gar nicht dem Satz von Picard-Lindelöf widersprechen. 
 
@@ -110,9 +116,17 @@ $\begin{vmatrix}
 
 ist diese Matrix indefinit $\leftrightarrow$ keine lokalen Extrema
 
-\textbf{Maxima und Minima in $\mathbb{R}^n$:} zuerst bestimmen wir von f(x,y) den Gradienten und schauen bei welchen Werten für x und y die Einträge 0 sind. Anschliessend bestimmen wir die Hesse-Matrix, setzen die gefundenen Werte ein (wenn x gefunden, dann y berechnen). Wir berechnen die Determinante und die Werte für $\lambda$. \underline{positiv definit} $\to$ Minimum, \underline{negativ definit} $\to$ Maximum, \underline{indefinit} $\to$ Sattelpunkt, \underline{positiv semidefinit} $\to$ Minimum oder  Sattelpunkt, \underline{negativ semidefinit} $\to$ Maximum oder  Sattelpunkt
+\textbf{Maxima und Minima in $\mathbb{R}^n$:} zuerst bestimmen wir von f(x,y) 
+den Gradienten und schauen bei welchen Werten für x und y die Einträge 0 sind. 
+Anschliessend bestimmen wir die Hesse-Matrix, setzen die gefundenen Werte ein 
+(wenn x gefunden, dann y berechnen). Wir berechnen die Determinante und die 
+Werte für $\lambda$. \underline{positiv definit} $\to$ Minimum, 
+\underline{negativ definit} $\to$ Maximum, \underline{indefinit} $\to$ 
+Sattelpunkt, \underline{positiv semidefinit} $\to$ Minimum oder  Sattelpunkt, 
+\underline{negativ semidefinit} $\to$ Maximum oder  Sattelpunkt
 
-\textit{\textbf{Extrema mit Nebenbedingungen:} gegeben sind in der Regel f und eine Nebenbedingun aus der wir g = 0 finden (alles auf eine Seite). Dann machen wir ein Gleichungssystem:}
+\textit{\textbf{Extrema mit Nebenbedingungen:} gegeben sind in der Regel f und
+eine Nebenbedingung aus der wir g = 0 finden (alles auf eine Seite). Dann machen wir ein Gleichungssystem:}
 
 $\begin{vmatrix}
 \partial_xf(x,y) = \lambda \partial_x g(x,y) \\
@@ -124,7 +138,9 @@ g(x)=0
 
 \textbf{kritische Punkte:} für Gradient der Funktion = $0$
 
-\textit{\textbf{Mannigfaltigkeit:} zeigen, dass etwas eine Mannigfaltigkeit der dim=2 ist: eine Funktion definierren, Differential davon nehmen = (0,0,0) $\to$ hat es kritische Punkte für die das erfüllt ist? wenn nicht $\in \mathbb{R}^n$ und somit dimension $k=n-1$}
+\textit{\textbf{Mannigfaltigkeit:} zeigen, dass etwas eine Mannigfaltigkeit der 
+dim=2 ist: eine Funktion definieren, Differential davon nehmen = (0,0,0) $\to$ 
+hat es kritische Punkte für die das erfüllt ist? Wenn nicht $\in \mathbb{R}^n$ und somit Dimension $k=n-1$}
 
 \textbf{Differential:}
 
@@ -157,7 +173,8 @@ $Df=\begin{pmatrix}
 
 \subsection*{Mittelwertsatz:} ist $f: [a,b]$ stetig, $f:(a,b)$ diff'bar $\exists f'(c)=\frac{f(b)-f(a)}{b-a}$ for a $c\in (a,b)$
 
-\textit{\textbf{Anwendung Mittelwertsatz:} $|f(b)-f(a)|=f'(c)\cdot |b-a| \to |f(b)-f(a)|\leq M \cdot |b-a|$, wobei $|f'(x)|\leq M $, $x \in (a,b)$}
+\textit{\textbf{Anwendung Mittelwertsatz:} $|f(b)-f(a)|=f'(c)\cdot |b-a| \to
+|f(b)-f(a)|\leq M \cdot |b-a|$, wobei $|f'(x)|\leq M $, $x \in (a,b)$}
 
 \textbf{Satz von Bernoulli de l'Hôpital:}
 
@@ -176,14 +193,23 @@ $P(x)=\sum_{n=0}^{\infty}\frac{1}{n!}f^{(n)}(a)(x-a^n)$
 
 \textit{\textbf{n-tes Taylorpolynom der Funktion $f(x)$ um Punkt $a$ finden mit $x \in I$}}
 
-\textbf{Bekannte Taylorreihen:} $\frac{1}{1-x}=1+x+x^2+...=\sum_{n=0}^{\infty}x^n$ $\to$ können in einem Bruch einfach $x$ ersetzen. $\big \vert$ $cos(x)=1-\frac{x^2}{2!}+...=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n}}{2n!}$
+\textbf{Bekannte Taylorreihen:}
+$\frac{1}{1-x}=1+x+x^2+...=\sum_{n=0}^{\infty}x^n$ $\to$ können in einem Bruch
+einfach $x$ ersetzen. $\big \vert$ $\cos(x)=1-\frac{x^2}{2!}+...=
+\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n}}{2n!}$
 
-\textbf{Lagrange error bound, Fehlerterm:} $|R_n(x,a)| = |f(x)-p_n(x,a)|\leq \frac{max_{\xi \in [a,x]}|f^{{(n+1)}}(\xi)|}{(n+1)\!}|x-a|^{n+1}$
+\textbf{Lagrange error bound, Fehlerterm:} $|R_n(x,a)| = |f(x)-p_n(x,a)|\leq
+\frac{\max_{\xi \in [a,x]}|f^{{(n+1)}}(\xi)|}{(n+1)\!}|x-a|^{n+1}$
 
-\textit{für die gegebene Funktion die n-te Ableitung aufschreiben, dann $[x, a]$ bestimmen, diese Variabeln und die Ableitung einsetzen, $\xi$ so wählen, dass das Maximum gegeben ist. Auch Variabeln für z.B. $a$ maximal wählen und Fehlerterm final aufschreiben}
+\textit{für die gegebene Funktion die n-te Ableitung aufschreiben, dann $[x, a]$ 
+bestimmen, diese Variablen und die Ableitung einsetzen, $\xi$ so wählen, dass 
+das Maximum gegeben ist. Auch Variablen für z.B. $a$ maximal wählen und 
+Fehlerterm final aufschreiben}
 
 \subsection*{Vektoranalysis}
-\textbf{Richtungsableitung:} gegeben sind ein stetig diff'bares Skalarfeld $ f: \Omega \subset \mathbb{R}^n \to \mathbb{R}^n$ und ein Einheitsvektor $\vec{e}$. Die Richtungsableitung ist dann $D_{\vec{e}}f(x_0)\equiv\vec{e} \cdot \nabla f(x_0)$
+\textbf{Richtungsableitung:} gegeben sind ein stetig diff'bares Skalarfeld 
+$ f: \Omega \subset \mathbb{R}^n \to \mathbb{R}^n$ und ein Einheitsvektor 
+$\vec{e}$. Die Richtungsableitung ist dann $D_{\vec{e}}f(x_0)\equiv\vec{e} \cdot \nabla f(x_0)$
 
 \textit{\textbf{Richtungsableitungen von f an Stelle $(x_0,y_0)$ in eine bel. Richtung $v=(a,b)\neq (0,0)$} Wir schreiben zuerst das auf: $D_vf(x_0, y_0)=\lim_{h \to 0}\frac{f(x_0+ha, y_0+hb)-f(x_0, y_0)}{h}$} und bestimmen das/die Limits. Können mehrere sein, falls z.b a im Nenner ist $\to$ müssen dann den Fall $a=0$ extra berechnen. 
 
@@ -270,22 +296,43 @@ $\frac{\partial}{\partial x}\int_{\phi (x)}^{\Psi (x)}f(x,t)dt= f(x, \Psi(x))\Ps
 
 Vielleicht wird auch ein Dreieck oder so gegeben, dann einfach einen Ausdruck für $x$ durch Steigung finden. 
 
-\textbf{Integrale:} $\int ln(x)=x\cdot ln(x) - x + C$ $\big \vert$ $\int cos^2(x)=\frac{cos(x)\cdot sin(x) + x}{2}$ $\big \vert$ $\int cos^n(x)dx=\frac{n-1}{n}\int cos^{n-2}dx+\frac{cos^{n-1}(x)sin(x)}{n}$, für sinus einfach tauschen und minus!
+\textbf{Integrale:} 
+$\int \ln(x)=x\cdot ln(x) - x + C$ $\big \vert$ 
+$\int \cos^2(x)=\frac{\cos(x)\cdot \sin(x) + x}{2}$ $\big \vert$ 
+$\int \cos^n(x)dx=\frac{n-1}{n}\int \cos^{n-2}dx+\frac{\cos^{n-1}(x)\sin(x)}{n}$,
+für sinus einfach tauschen und minus! $\big \vert$
+$\int x^{\alpha} = \frac{x^{\alpha + 1}}{\alpha + 1} + C$ falls $\alpha \neq -1 \big \vert$
+$\int \frac{1}{x} = \log (x) + c$ $\big \vert$
+$\int e^x = e^x + C$ $\big \vert$
+$\int \alpha^{x} = \frac{\alpha^{x}}{\log (\alpha)} + C$ $\big \vert$
+$\int \sin x = -\cos x + C$ $\big \vert$
+$\int \cos x = \sin x + C$ $\big \vert$
+$\int \sinh x = \cosh x + C$ $\big \vert$
+$\int \cosh x = \sinh x + C$ $\big \vert$
+$\int \frac{1}{\sqrt{1 - x^2}} = \arcsin x + C$ $\big \vert$ %
+$\int \frac{-1}{\sqrt{1 - x^2}} = \arccos x + C$ $\big \vert$
+$\int \frac{1}{1 + x^2} = \arctan x + C$ $\big \vert$
+$\int \frac{1}{\sqrt{1 + x^2}} = \arcsinh x + C$ $\big \vert$
+$\int \frac{1}{\sqrt{x^2 - 1}} = \arccosh x + C$ $\big \vert$
+$\int \frac{1}{1 - x^2} = \arctanh x + C$ $\big \vert$
+
 
 \subsection*{Koordinatentransformation}
 im Allgemeinen ist die Determinante des Differentials = Jacobi. 
-\textbf{Polarkoordinaten: } $x= rcos\phi, y=rsin\phi$, Jacobi $=rdrd\phi$, 
-\textbf{Elliptisch:} $x=racos\phi, y = rbsin\phi$, Jacobi $=abrdrd\phi$, \textbf{Zylinder:} $x=rcos\phi, y=rsin\phi, z=z$, Jacobi $=rdrd\phi dz$, \textbf{Kugel:} $x=rsin\theta cos\phi, y=rsin\theta sin\phi, z=rcos\theta$, Jacobi $=r^2sin\theta drd\theta d\phi$, $\theta \in (0,\pi), \phi \in [0,2\pi)$
+\textbf{Polarkoordinaten: } $x= r \cos\phi, y=r \sin\phi$, Jacobi $=rdrd\phi$, 
+\textbf{Elliptisch:} $x=r a \cos\phi, y = r b \sin\phi$, Jacobi $=abrdrd\phi$,
+\textbf{Zylinder:} $x=r \cos\phi, y=r \sin\phi, z=z$, Jacobi $=rdrd\phi dz$,
+\textbf{Kugel:} $x=r \sin\theta \cos\phi, y=r \sin\theta \sin\phi, z=r \cos\theta$,
+Jacobi $=r^2 \sin\theta drd\theta d\phi$, $\theta \in (0,\pi), \phi \in [0,2\pi)$
 
 \subsection*{Rechenregeln und random züügs:} 
 \begin{itemize}
 	\item wenn eine Fkt. symmetrisch ist, kann man einfach den positiven Definitionsbereich anschauen
 	\item wenn ein Term bei ungeradem n -/+ $\to (-1)^{(n+1)/2}$, bei geraden $\to (-1)^{n/2}$ $ \big \vert$ für +/- $n \to n+2$
-	\item $tanx = \frac{sinx}{cosx}$
-	\item $sin^3=(1-cos^2)sin$
+	\item $\tan x = \frac{\sin x}{\cos x}$
+	\item $\sin^3=(1-\cos^2)\sin$
 	\item $a \times b \times c = b(a \cdot c) + c(a \cdot b)$
 	\item $ln(1)=0$
-
 \end{itemize}
 
 $\frac{d}{dx} |x| = \frac{x}{|x|}$ $\big \vert$ $\frac{d}{dx} \arcsin = \frac{1}{\sqrt{1-x^2}}$ $\big \vert$ $\frac{d}{dx} \arccos = -\frac{1}{\sqrt{1-x^2}}$ $\big \vert$ $\frac{d}{dx} \arctan = \frac{1}{1+x^2}$ $\big \vert$ $\frac{d}{dx} ln^2x = \frac{2lnx}{x}$ $\big \vert$ $\frac{d}{dx}cos^5x=-5cos^4xsinx$
