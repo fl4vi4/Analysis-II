@@ -21,6 +21,7 @@
 \usepackage{framed}
 \usepackage{dsfont}
 \usepackage{tikz}
+\usepackage{amsmath}
 
 \usepackage{lipsum}	% für Dummy-Text
 
@@ -63,7 +64,7 @@
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
 		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
-
+\newcommand{\mbeq}{\overset{!}{=}}
 
 % Titel und Author
 \title{Zusammenfassung Analysis II}
@@ -89,6 +90,15 @@
 \textit{\textbf{Diff'barkeit in $\mathbb{R}^n$:} zuerst die partiellen Ableitungen berechnen, um zu zeigen, dass diese gleichzeitig existieren (wenn es eine aufgeteilte Funktion ist, dann den Teil um den kritischen Punkt nehmen). Das Differential ist: $df \vert _{{x_0, y_0}} (v) = \frac{\partial }{\partial x} (x_0, y_0)v_1 + \frac{\partial }{\partial y}(x_0, y_0)v_2$. Nun berechnen wir: $R(v)=f(v) - f(x_0, y_0) - df(v)$, wobei $v=(v_1, v_2)$. Der GW  $\lim_{v \to (x_0, y_0)} \frac{R(v)}{\vert v \vert} = 0$}
 
 \textbf{Stetigkeit in $\mathbb{R}^n$:} Polarkoordinatentrick ist nützlich: $x= rcos\phi, y=rsin\phi$, falls der GW nur von $\phi$ abhängt, dann existiert der GW nicht. \textit{\textbf{in einem Punkt:} beide partielle Ableitungen berechnen, die GW der Abtleitungen nach gefragtem Punkt müssen gleich sein.}
+
+\textbf{Lipschitz-Stetigkeit:} Eine Funktion ist Lipschitz stetig, fall die Ableitung beschränkt ist (geht in keinem Punkt gegen unendllich). Ist etwas nicht Lipschitz stetig, kann es gar nicht dem Satz von Picard-Lindelöf widersprechen. 
+
+
+\textbf{Satz von Picard-Lindelöf:} Eine Funktion ist in der zweiten Variabel Lipschitz-stetig, also: $\exists L > 0$ mit $\vert \vert f(x,y)-f'(x,y')\vert \vert \leq L\vert \vert y-y'\vert \vert$. Dann gibt es ein $\epsilon > 0$ sodass das Anfangswertproblem 
+$\begin{vmatrix}
+	y'(x)=f(x,y)\\
+	y(x_0)=y_0
+\end{vmatrix}$ eine eindeutige Lösung hat $y\in C'([x_0-\epsilon, x_0+\epsilon], \mathbb{R}^n)$ $\to $ Eindeutigkeit (wir können sagen, dass wenn die Ableitung einer Funktion beschränkt ist, dann existiert in einem Intervall eine eindeutige Lösung)
 
 \textbf{Satz von Schwarz:} ist eine Funktion 2x diff'bar und die 2ten Ableitungen sind stetig, dann kann man die partiellen Ableitungen vertauschen: $\frac{\partial ^2 f}{\partial x_i \partial x_j}= \frac{\partial ^2 f}{\partial x_j \partial x_i}$
 
@@ -125,6 +135,24 @@ $Df=\begin{pmatrix}
 \end{pmatrix}$
 
 
+\subsection*{Differentialgleichungen}
+\textbf{Trennung der Variabeln:} erst $y'=\frac{dy}{dx}$ umschreiben, alle x und alle y auf eine Seite. Integrieren und c nicht vergessen. Nach y auflösen, die Anfangsbedingungen einsetzen um c zu finden. in y(x) einsetzen und fertig. 
+
+\textbf{Substitutionen:} 
+
+\textit{Form:} $y'=h(\frac{y}{x})$ auf $\frac{y}{x}$ \textbf{achten}, dann $z=\frac{y(x)}{x}$ und $y'=z+xz'$ einsetzen und nach z lösen, dann Rücksubstitution. 
+
+\textit{Form:} $y'=h(ax+by+c)$, substituieren: $z(x)=ax+by+c$, $y'=\frac{z'-a}{b}$ die Werte für a,b,c mit vergleichen finden. 
+
+\textit{Form:} $y'=h(\frac{ax+bx+c}{dx+ey+f})$, Gleihcungssystem mit Zähler und Nenner = 0, $z=y-y_0$, $t=x-x_0$, $y'=z'$
+
+\textit{Form:} $y'=\frac{x}{y}h(xy)$, $z=xy$, $y'=\frac{xz'-z}{x^2}$
+
+\textit{Form:}$y'=h(x)y+g(x)y^a$, $z=y^{1-a}, y'=\frac{1}{1-a}z^{a/(1-a)z'}$
+
+\textbf{Eindeutigkeit von Anfangswertproblemen:} Falls wie zeigen müssen, dass eine Funktion y definiert ist durch eine aufgeteilte Funktion müssen wir zeigen, dass die Funktion und die Ableitung stetig sind, also GW von oben und unten gleich. $\to$ Picard-Lindelöf
+
+
 \subsection*{Produkt-, Quotienten-, Kettenregel} $(f\cdot g)'(x_0) = f(x)g'(x)+g'(x)f(x)$ $\big \vert$  $(\frac{f}{g})'(x_0) = \frac{g(x)f'(x)-f(x)g'(x)}{g^2(x)}$ $\big \vert$ $(g\circ f)'(x_0)=g'(f(x))\cdot f'(x)$ $\big \vert$ $[a^{u(x)}]'= ln(a)\cdot a^{u(x)}\cdot u'(x)$
 
 \subsection*{Mittelwertsatz:} ist $f: [a,b]$ stetig, $f:(a,b)$ diff'bar $\exists f'(c)=\frac{f(b)-f(a)}{b-a}$ for a $c\in (a,b)$
@@ -140,9 +168,11 @@ $Df=\begin{pmatrix}
 \subsection*{Taylorpolynom}
 $f(x)=f(a)+f'(a)(x-a)+...+\frac{1}{m!}f^{m}(a)(x-a)^m+\frac{1}{(m+1)!}f^{(m+1)}(c)(x-a)^{m+1}$
 
+Alle bis zur m-ten Ableitungen berechnen und Punkt a einsetzen. Und dann einfach Formel (oben) anweden, m ist die Ableitung. 
+
 $P(x)=\sum_{n=0}^{\infty}\frac{1}{n!}f^{(n)}(a)(x-a^n)$
 
-\textbf{Taylorpolynom zweiter Ordnung in Punkt a:} $f(a) + \nabla f(a)\cdot h + \frac{1}{2}h^TH_f(a)h$ das entspricht: $f(a) + h_1 \frac{\partial f(a)}{\partial x}+h_2\frac{\partial f(a)}{\partial y}+h_3\frac{\partial f(a)}{\partial z}+\frac{1}{2}(h_1^2\frac{\partial^2 f(a)}{\partial x^2}+h_2^2\frac{\partial^2 f(a)}{\partial y^2}+h_3^2\frac{\partial^2 f(a)}{\partial z^2}+2h_1h_2\frac{\partial ^2 f}{\partial x \partial y}+2h_1h_3\frac{\partial ^2 f}{\partial x \partial z}+2h_2h_3\frac{\partial ^2 f}{\partial y \partial z})$
+\textbf{Taylorpolynom zweiter Ordnung in Punkt $(a_1, a_2, a_3)$:} $f(a) + \nabla f(a)\cdot h + \frac{1}{2}h^TH_f(a)h$ das entspricht: $f(a) + h_1 \frac{\partial f(a)}{\partial x}+h_2\frac{\partial f(a)}{\partial y}+h_3\frac{\partial f(a)}{\partial z}+\frac{1}{2}(h_1^2\frac{\partial^2 f(a)}{\partial x^2}+h_2^2\frac{\partial^2 f(a)}{\partial y^2}+h_3^2\frac{\partial^2 f(a)}{\partial z^2}+2h_1h_2\frac{\partial ^2 f}{\partial x \partial y}+2h_1h_3\frac{\partial ^2 f}{\partial x \partial z}+2h_2h_3\frac{\partial ^2 f}{\partial y \partial z})$, $h_1=(x-a_1)$, $h_2=(x-a_2)$, $h_1=(x-a_2)$
 
 \textit{\textbf{n-tes Taylorpolynom der Funktion $f(x)$ um Punkt $a$ finden mit $x \in I$}}
 
@@ -159,6 +189,53 @@ $P(x)=\sum_{n=0}^{\infty}\frac{1}{n!}f^{(n)}(a)(x-a^n)$
 
 \textbf{Tagentialebene an $S=t_1+t_2+t_3$  in $\bar{x}$:} $T_{\bar{x}} = \{(x_1, x_2, x_3)\in \mathbb{R}^n (x-\bar{x})\cdot \nabla \Phi(\bar{x})=0\}$, also alle Ableitungen addiert mit $ (x-\bar{x}, y-\bar{y}, z-\bar{z})$ jeweils multipliziert. \textit{Wir suchen die \underline{Schnittpunkte $(t_1, t_2, t_3)$} der TE mit den Koordinatenachsen:wir setzen $(x=t_1, y=0, z=0)$ in die Menge von vorher ein, aber nur für das $x\in(x-\bar{x})$. Machen das gleiche für $y$ und $z$. }
 
+\textbf{Flächen berechnen:} Wir haben eine Funktion in $\mathbb{R}^2$ und sollen den Flächeninhalt einer Menge in $\mathbb{R}^3$ berechnen. Meistens ist $z$ dann in dieser Menge gegeben (direkt oder indeirekt). Wir schreiben dann: $(x,y) \to (x,y,z)$, wobei in z irgendwas eingesetzt wird. Je nachdem machen wir Koordinatentransformation und müssen die Bedingungen gegeben in der Menge noch damit umschreiben. Wir leiten dann von $(x,y,z)$ jeweils nach nach Variabeln vom Anfanf $(x,y)$ ab und kriegen 2 Vektoren: $\phi_x$ und $\phi_y$ (\textbf{Tangentialvektoren}). Wir berechnen dann das Kreuzprodukt und nehmen den Betrag (Wurzel von Summe von Komponenten hoch 2). Mit diesem Betrag schreiben wir den Flächeninhalt: $\mu (F)= \int_{A} \vert \phi_x \times \phi_y \vert dxdy$. Integral berechnen (vlt vorher noch Transformation, und die umgeformten Bedingungen als Integrationsgrenzen) und finito.
+
+\textbf{Vektorfeld:} ist eine Abb. $\mathbb{R}^n \to \mathbb{R}^m$, welche jedem Punkt x des Definitionsbereichs einen Vektor mit m Komponenten zuordnet. $x \to \begin{pmatrix}
+v_1(x_1, ..., x_n) \\
+...\\
+v_m(x_1, ... x_n)
+\end{pmatrix}$
+
+\textbf{Feldlinien: } K ist ein Vektorfeld. Eine parametrisierte Kurve heisst Feldlinie, falss $\gamma ' (t)$ für alle $t\in I \propto K(\gamma (t))$. Eine natürliche Feldlinie ist durch $\gamma ' (t) = K(\gamma (t))$ bestimmt! (können also eine Zahl $L$ als Proportionalitätskonstante wählen $\to L\gamma ' (t) = K(\gamma (t))$) 
+
+Können das benutzen um ein Vektorfeld zu konstruieren.
+
+\textbf{Gradien:} $\begin{pmatrix}
+\frac{\partial f}{\partial_{x_1}} \\
+... \\
+\frac{\partial f}{\partial_{x_n}}
+\end{pmatrix}$, zeigt Richtung der max. Zuwachsrate.
+
+\textbf{Gradientfelder:} \fbox{$K=\nabla \phi$}, \fbox{$K_x = \frac{\partial \phi}{\partial x}$}
+ Damit ein Vektorfeld ein Gradienfeld ist muss man zeigen: $\frac{\partial K_x}{\partial y}$ = $\frac{\partial K_y}{\partial x}$ (also erste Komponente nach y und zweite nach x ableiten). Um das \textbf{Potentialfeld} zu bestimmen, findet man: 
+
+$\phi(x,y) = \int K_x dx + \psi(y)$ 
+
+$\psi(y)=\int K_y dy + c$
+
+Wir setzen alles in $\phi(x,y)$ ein und haben das Potentialfeld gefunden. Überprüfen, dass $K_y\neq\frac{\partial \phi}{\partial y}$, sonst entfällt die Ableitung $\frac{\partial \psi}{\partial y}$ und wir haben nur die erste Gleichung mit Konstante c dann. 
+
+\textbf{Gradientfeld mit 3 Variabeln:} es muss gelten:
+
+$\frac{\partial K_z}{\partial y}-\frac{\partial K_y}{\partial z} = 0$, $\frac{\partial K_x}{\partial z}-\frac{\partial K_z}{\partial x} = 0$, $\frac{\partial K_y}{\partial x}-\frac{\partial K_x}{\partial y} = 0$,
+
+\textbf{Potential $\phi$ finden:} $\begin{pmatrix}
+K_1 \\ K_2 \\ K_3 
+\end{pmatrix}$ = 
+$\begin{pmatrix}
+\frac{\partial \phi}{\partial x} \\ \frac{\partial \phi}{\partial y} \\ \frac{\partial \phi}{\partial z} 
+\end{pmatrix}$, wobei K gegeben
+
+Wir fangen mit einer Gleichung an: $\frac{\partial\phi}{\partial x}\mbeq K_1 \to \phi = \int K_1 dx = $ etwas $+C(y,z)$, dann diese Lösung in eine zweite einsetzen: $\frac{\partial\phi}{\partial y}=\frac{etwas + c(y,z)}{\partial y}= $smth$ + \frac{\partial c(y,z)}{\partial y} \mbeq K_2 $
+
+$\to \frac{\partial c(y,z)}{\partial y} =$ smthelse, wir integrieren: $c=$ etwas + Etwas + D(z). Wir setzen das in unser erstes $\phi$ ein und kriegen: $\phi =$ etwas + Etwas + D(z). Das setzen wie in die anderen 2 partiellen Ableitungen ein und finden D(z) (dazu vergleichen wir mit den partiellen Ableitungen von K, denn $K=\nabla \phi$ und passen mithilfe von D so an, dass es mit den Ableitungen übereinstimmt). Arbeit: $\phi (B)-\phi(A)$
+
+
+\textbf{Divergenz:} $div(\vec{v})=\nabla \cdot \vec{v}=\frac{\partial v_1}{\partial x_1}+...+\frac{\partial v_n}{\partial x_n}$
+
+\textbf{Satz von Gauss:} \fbox{$\int_{\partial \Sigma}\vec{V}\cdot \vec{n} d \Omega= \int_{\Sigma}\vec{\nabla}\cdot\vec{v}d\mu$} von Fluss durch \textbf{Fläche} nach \textbf{Volumen}. $/vec{V}$ ist ein Vektorfeld, $\Sigma$ ein glatt berandeter Bereich.
+
 \subsection*{Riemann'sche Summe}
 \textbf{Obersumme:} $\bar{S}=\sum_{i=1}^{n} \Delta x \cdot \Delta y$, wobei $\Delta x = \frac{Intervall}{n}$, also z.B für ein Interval $[0,2] \to \Delta x = \frac{2}{n}$. Und: $\Delta y = f(\Delta x \cdot i)$.
 \textit{Können alles ausser die $i$ abhängigen Terme vor das Summenzeichen nehmen und in mehrere Summen aufteilen. Für Funktionen mit x und y, einfach gelich machen, aber dann um $\Delta y$ zu finden $x=\Delta x$ einsetzen.}
@@ -171,12 +248,14 @@ $P(x)=\sum_{n=0}^{\infty}\frac{1}{n!}f^{(n)}(a)(x-a^n)$
 
 \subsection*{Integral}
 
+\textbf{Linienintegrale:} Aufgabe: Berechnen Sie das Linienintegral $\int_{\gamma} Kdx$. K ist gegeben. Als erstes müssen wie $\gamma (t)$ aufschreiben (Z.B Plarkoordinaten für Einheitskreis, oder gegeben durch eine Gleichung). Dann berechnen wir $K(\gamma (t))$ und $\gamma ' (t)$. Dann integrieren wir: $\int_{\gamma} K(\gamma (t))\cdot \gamma ' (t)dt$, wobei die Grenzen durch Aufgabe oder Transformation gegeben sind (Skizze hilft).
+
 \textit{\textbf{Partialbruchzerlegung falls Polynom im Nenner:} 1. Den Nenner faktorisieren 2. Nullstellen ablesen 3. Die Zerlegung aufschreiben und mit Nenner multiplizieren 4. Jede Nullstelle einsetzen, um A,B,... zu finden. 5. Diese einsetzen und Teile einzeln integrieren}
 \textbf{Beispiel: }$f(x)=\frac{2x+3}{x^2-9}$, 1. $(x-3)(x+3)$ 2. 0-Stellen: $3, -3$ 3. $\frac{2x+3}{(x+3)(x-3)}=\frac{A}{x+3}+ \frac{B}{x-3} \to 2x+3=A(x-3)+B(x+3)$ 4. $A=\frac{1}{2}, B=\frac{2}{3}$ 5. $\int\frac{2x+3}{(x+3)(x-3)}dx=\int\frac{1}{2}\frac{1}{x+3}dx+ \int\frac{2}{3}\frac{1}{x-3}dx$
 
 \textbf{Leibniz integral rule:} 
 
-$\frac{\partial}{\partial x}\int_{\phi (x)}^{\Psi (x)}f(x,tdt)= f(x, \Psi(x))\Psi'(x)-f(x, \phi (x))\phi'(x)+\int_{\phi (x)}^{\Psi(x)}f'(x, t)$, die Integrationsgrenzen sind die Funktionen vor einer Funktion mit 2 Variabeln
+$\frac{\partial}{\partial x}\int_{\phi (x)}^{\Psi (x)}f(x,t)dt= f(x, \Psi(x))\Psi'(x)-f(x, \phi (x))\phi'(x)+\int_{\phi (x)}^{\Psi(x)}f'(x, t)$, die Integrationsgrenzen sind die Funktionen vor einer Funktion mit 2 Variabeln
 
 \textbf{Patielle Integration:} $\int u dv=u\cdot v -\int v du$, \textbf{dv}: 1, falls $arc$ oder $log$, $x^n, \frac{1}{1\pm x^2}$
 \textbf{u:}$x^n, log, arc... $
@@ -204,6 +283,9 @@ im Allgemeinen ist die Determinante des Differentials = Jacobi.
 	\item wenn ein Term bei ungeradem n -/+ $\to (-1)^{(n+1)/2}$, bei geraden $\to (-1)^{n/2}$ $ \big \vert$ für +/- $n \to n+2$
 	\item $tanx = \frac{sinx}{cosx}$
 	\item $sin^3=(1-cos^2)sin$
+	\item $a \times b \times c = b(a \cdot c) + c(a \cdot b)$
+	\item $ln(1)=0$
+
 \end{itemize}
 
 $\frac{d}{dx} |x| = \frac{x}{|x|}$ $\big \vert$ $\frac{d}{dx} \arcsin = \frac{1}{\sqrt{1-x^2}}$ $\big \vert$ $\frac{d}{dx} \arccos = -\frac{1}{\sqrt{1-x^2}}$ $\big \vert$ $\frac{d}{dx} \arctan = \frac{1}{1+x^2}$ $\big \vert$
