@@ -26,6 +26,7 @@
 \usepackage{lipsum}	% für Dummy-Text
 
 
+\DeclareMathOperator{\arc}{arc}
 \DeclareMathOperator{\arcsinh}{arcsinh}
 \DeclareMathOperator{\arccosh}{arccosh}
 \DeclareMathOperator{\arctanh}{arctanh}
@@ -283,10 +284,13 @@ $\to \frac{\partial c(y,z)}{\partial y} =$ smthelse, wir integrieren: $c=$ etwas
 
 $\frac{\partial}{\partial x}\int_{\phi (x)}^{\Psi (x)}f(x,t)dt= f(x, \Psi(x))\Psi'(x)-f(x, \phi (x))\phi'(x)+\int_{\phi (x)}^{\Psi(x)}f'(x, t)$, die Integrationsgrenzen sind die Funktionen vor einer Funktion mit 2 Variabeln
 
-\textbf{Patielle Integration:} $\int u dv=u\cdot v -\int v du$, \textbf{dv}: 1, falls $arc$ oder $log$, $x^n, \frac{1}{1\pm x^2}$
-\textbf{u:}$x^n, log, arc, cos^n... $
+\textbf{Patielle Integration:} $\int u dv=u\cdot v -\int v du$, \textbf{dv}: 1,
+falls $\arc$ oder $\log$, $x^n, \frac{1}{1\pm x^2}$
+\textbf{u:}$x^n, \log, \arc, \cos^n... $
 
-\textbf{$x^2 + bla$ im Nenner:} $\int \frac{1}{8(x^2+4)}$ substituieren mit $x=2u \to u=\frac{x}{2}, du = \frac{1}{2}dx$ dann Integral: $\frac{1}{8}\int \frac{2}{4u^2+4}du \to \frac{1}{16} \int \frac{1}{u^2+4}du= \frac{arctan(u)}{16}$
+\textbf{$x^2 + bla$ im Nenner:} $\int \frac{1}{8(x^2+4)}$ substituieren mit
+$x=2u \to u=\frac{x}{2}, du = \frac{1}{2}dx$ dann Integral: $\frac{1}{8}\int
+\frac{2}{4u^2+4}du \to \frac{1}{16} \int \frac{1}{u^2+4}du= \frac{\arctan(u)}{16}$
 
 \textbf{uneigentliche Integrale, Integral konvergent?:} einfach Integral berechnen und schauen, ob es einen Wert hat $\to$ konvergent, sonst divergent
 
@@ -297,7 +301,7 @@ $\frac{\partial}{\partial x}\int_{\phi (x)}^{\Psi (x)}f(x,t)dt= f(x, \Psi(x))\Ps
 Vielleicht wird auch ein Dreieck oder so gegeben, dann einfach einen Ausdruck für $x$ durch Steigung finden. 
 
 \textbf{Integrale:} 
-$\int \ln(x)=x\cdot ln(x) - x + C$ $\big \vert$ 
+$\int \ln(x)=x\cdot \ln(x) - x + C$ $\big \vert$ 
 $\int \cos^2(x)=\frac{\cos(x)\cdot \sin(x) + x}{2}$ $\big \vert$ 
 $\int \cos^n(x)dx=\frac{n-1}{n}\int \cos^{n-2}dx+\frac{\cos^{n-1}(x)\sin(x)}{n}$,
 für sinus einfach tauschen und minus! $\big \vert$
@@ -335,9 +339,35 @@ Jacobi $=r^2 \sin\theta drd\theta d\phi$, $\theta \in (0,\pi), \phi \in [0,2\pi)
 	\item $ln(1)=0$
 \end{itemize}
 
-$\frac{d}{dx} |x| = \frac{x}{|x|}$ $\big \vert$ $\frac{d}{dx} \arcsin = \frac{1}{\sqrt{1-x^2}}$ $\big \vert$ $\frac{d}{dx} \arccos = -\frac{1}{\sqrt{1-x^2}}$ $\big \vert$ $\frac{d}{dx} \arctan = \frac{1}{1+x^2}$ $\big \vert$ $\frac{d}{dx} ln^2x = \frac{2lnx}{x}$ $\big \vert$ $\frac{d}{dx}cos^5x=-5cos^4xsinx$
+$\frac{d}{dx} |x| = \frac{x}{|x|}$ $\big \vert$ $\frac{d}{dx} \arcsin = 
+\frac{1}{\sqrt{1-x^2}}$ $\big \vert$ $\frac{d}{dx} \arccos = -\frac{1}{\sqrt{1-x^2}}$ 
+$\big \vert$ $\frac{d}{dx} \arctan = \frac{1}{1+x^2}$ $\big \vert$ $\frac{d}{dx} 
+\ln^2x = \frac{2\ln x}{x}$ $\big \vert$ $\frac{d}{dx}\cos^5 x = -5\cos^4 x\sin x$
 
-\includegraphics[width=1\linewidth]{winkel.png}
+{\scriptsize
+\vspace{2ex}
+\begin{tabular}{lccccccccc}
+    \hline \\
+    rad     & $0$ & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & 
+    $\frac{\pi}{2}$ & $\frac{2 \pi}{3}$ & $\frac{3\pi}{4}$
+                    & $\frac{5\pi}{6}$ & $\pi$ \\[1.2ex]
+
+                    grad    & 0 & 30 & 45 & 60 & 90 & 120 & 135 & 150 & 180 \\[1.2ex]
+
+    sin     & 0 & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ &
+    1 & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & 0
+    \\[1.2ex]
+
+    cos     & 1 & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ &
+    0 & $-\frac{1}{2}$ & $-\frac{\sqrt{2}}{2}$ & $-\frac{\sqrt{3}}{2}$ & $-1$
+    \\[1.2ex]
+
+    tan     & 0 & $\frac{1}{\sqrt{3}}$ & 1 & $\sqrt{3}$ & n.\,d. & $-\sqrt{3}$ &
+    $-1$ & $-\sqrt{3}$ & 0 \\[2ex]
+    \hline
+\end{tabular}
+\vspace{2ex}
+}
 
 
 
