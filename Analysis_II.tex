@@ -253,14 +253,14 @@ $\begin{pmatrix}
 \frac{\partial \phi}{\partial x} \\ \frac{\partial \phi}{\partial y} \\ \frac{\partial \phi}{\partial z} 
 \end{pmatrix}$, wobei K gegeben
 
-Wir fangen mit einer Gleichung an: $\frac{\partial\phi}{\partial x}\mbeq K_1 \to \phi = \int K_1 dx = $ etwas $+C(y,z)$, dann diese Lösung in eine zweite einsetzen: $\frac{\partial\phi}{\partial y}=\frac{etwas + c(y,z)}{\partial y}= $smth$ + \frac{\partial c(y,z)}{\partial y} \mbeq K_2 $
+Wir fangen mit einer Gleichung an: $\frac{\partial\phi}{\partial x}\mbeq K_1 \to \phi = \int K_1 dx = $ etwas $+C(y,z)$, dann diese Lösung in eine zweite einsetzen: $\frac{\partial\phi}{\partial y}=\frac{\partial etwas + c(y,z)}{\partial y}= $smth$ + \frac{\partial c(y,z)}{\partial y} \mbeq K_2 $ ($K_2$ einsetzen)
 
-$\to \frac{\partial c(y,z)}{\partial y} =$ smthelse, wir integrieren: $c=$ etwas + Etwas + D(z). Wir setzen das in unser erstes $\phi$ ein und kriegen: $\phi =$ etwas + Etwas + D(z). Das setzen wie in die anderen 2 partiellen Ableitungen ein und finden D(z) (dazu vergleichen wir mit den partiellen Ableitungen von K, denn $K=\nabla \phi$ und passen mithilfe von D so an, dass es mit den Ableitungen übereinstimmt). Arbeit: $\phi (B)-\phi(A)$
+$\to \frac{\partial c(y,z)}{\partial y} =$ smthelse, wir integrieren: $c=$ etwas + Etwas + D(z). Wir setzen das in unser erstes $\phi$ ein und kriegen: $\phi =$ etwas + Etwas + D(z). Das setzen wie in die anderen 2 partiellen Ableitungen ein und finden D(z) (dazu vergleichen wir mit den partiellen Ableitungen von K, denn $K=\nabla \phi$ und passen mithilfe von D so an, dass es mit den Ableitungen übereinstimmt $\to$ wenn alles übereinstimmt, D = Konstante). Arbeit: $\phi (B)-\phi(A)$
 
 
 \textbf{Divergenz:} $div(\vec{v})=\nabla \cdot \vec{v}=\frac{\partial v_1}{\partial x_1}+...+\frac{\partial v_n}{\partial x_n}$
 
-\textbf{Satz von Gauss:} \fbox{$\int_{\partial \Sigma}\vec{V}\cdot \vec{n} d \Omega= \int_{\Sigma}\vec{\nabla}\cdot\vec{v}d\mu$} von Fluss durch \textbf{Fläche} nach \textbf{Volumen}. $/vec{V}$ ist ein Vektorfeld, $\Sigma$ ein glatt berandeter Bereich.
+\textbf{Satz von Gauss:} \fbox{$\int_{\partial \Sigma}\vec{V}\cdot \vec{n} d \Omega= \int_{\Sigma}\vec{\nabla}\cdot\vec{v}d\mu$} von Fluss durch \textbf{Fläche} nach \textbf{Volumen}. $\vec{V}$ ist ein Vektorfeld, $\Sigma$ ein glatt berandeter Bereich.
 
 \subsection*{Riemann'sche Summe}
 \textbf{Obersumme:} $\bar{S}=\sum_{i=1}^{n} \Delta x \cdot \Delta y$, wobei $\Delta x = \frac{Intervall}{n}$, also z.B für ein Interval $[0,2] \to \Delta x = \frac{2}{n}$. Und: $\Delta y = f(\Delta x \cdot i)$.
@@ -276,6 +276,8 @@ $\to \frac{\partial c(y,z)}{\partial y} =$ smthelse, wir integrieren: $c=$ etwas
 
 \textbf{Linienintegrale:} Aufgabe: Berechnen Sie das Linienintegral $\int_{\gamma} Kdx$. K ist gegeben. Als erstes müssen wie $\gamma (t)$ aufschreiben (Z.B Plarkoordinaten für Einheitskreis, oder gegeben durch eine Gleichung). Dann berechnen wir $K(\gamma (t))$ und $\gamma ' (t)$. Dann integrieren wir: $\int_{\gamma} K(\gamma (t))\cdot \gamma ' (t)dt$, wobei die Grenzen durch Aufgabe oder Transformation gegeben sind (Skizze hilft).
 
+Wenn $K$ kein Feld ist, dann nehmen wir von $\gamma '$ die Norm: $\vert \vert \gamma ' (t)\vert \vert$ (alle Komponenten addieren und hoch 2).
+
 \textit{\textbf{Partialbruchzerlegung falls Polynom im Nenner:} 1. Den Nenner faktorisieren 2. Nullstellen ablesen 3. Die Zerlegung aufschreiben und mit Nenner multiplizieren 4. Jede Nullstelle einsetzen, um A,B,... zu finden. 5. Diese einsetzen und Teile einzeln integrieren}
 \textbf{Beispiel: }$f(x)=\frac{2x+3}{x^2-9}$, 1. $(x-3)(x+3)$ 2. 0-Stellen: $3, -3$ 3. $\frac{2x+3}{(x+3)(x-3)}=\frac{A}{x+3}+ \frac{B}{x-3} \to 2x+3=A(x-3)+B(x+3)$ 4. $A=\frac{1}{2}, B=\frac{2}{3}$ 5. $\int\frac{2x+3}{(x+3)(x-3)}dx=\int\frac{1}{2}\frac{1}{x+3}dx+ \int\frac{2}{3}\frac{1}{x-3}dx$
 
@@ -285,6 +287,8 @@ $\frac{\partial}{\partial x}\int_{\phi (x)}^{\Psi (x)}f(x,t)dt= f(x, \Psi(x))\Ps
 
 \textbf{Patielle Integration:} $\int u dv=u\cdot v -\int v du$, \textbf{dv}: 1, falls $arc$ oder $log$, $x^n, \frac{1}{1\pm x^2}$
 \textbf{u:}$x^n, log, arc, cos^n... $
+
+\fbox{bei $(x^2-1)$ faktorisieren!}
 
 \textbf{$x^2 + bla$ im Nenner:} $\int \frac{1}{8(x^2+4)}$ substituieren mit $x=2u \to u=\frac{x}{2}, du = \frac{1}{2}dx$ dann Integral: $\frac{1}{8}\int \frac{2}{4u^2+4}du \to \frac{1}{16} \int \frac{1}{u^2+4}du= \frac{arctan(u)}{16}$
 
